@@ -26,7 +26,7 @@ def tokenize(texts: list[str]):
     return bm25s.tokenize(texts, stopwords="en", show_progress=False)
 
 
-def build(raw_dir: Path = config.RAW_DIR, index_dir: Path = config.INDEX_DIR, batch: int = 64) -> dict:
+def build(raw_dir: Path = config.RAW_DIR, index_dir: Path = config.INDEX_DIR, batch: int = 16) -> dict:
     import bm25s
     import lancedb
 
@@ -44,17 +44,26 @@ def build(raw_dir: Path = config.RAW_DIR, index_dir: Path = config.INDEX_DIR, ba
 
     t2 = time.time()
     model = embedder()
-    vecs = model.encode(texts, batch_size=batch, normalize_embeddings=True, show_progress_bar=True)
-    rows = [{"id": c.id, "row": i, "vector": v.tolist()} for i, (c, v) in enumerate(zip(chunks, vecs))]
+    model.max_seq_length = 384
     db = lancedb.connect(str(index_dir / "lancedb"))
-    db.create_table("chunks", data=rows, mode="overwrite")
-    print(f"embedded {len(rows)} chunks in {time.time() - t2:.1f}s")
+    table = None
+    step = 1024  # embed and write in slices to keep peak RAM low
+    for start in range(0, len(texts), step):
+        vecs = model.encode(texts[start : start + step], batch_size=batch, normalize_embeddings=True)
+        rows = [{"id": chunks[start + j].id, "row": start + j, "vector": v.tolist()} for j, v in enumerate(vecs)]
+        if table is None:
+            table = db.create_table("chunks", data=rows, mode="overwrite")
+        else:
+            table.add(rows)
+        print(f"  embedded {min(start + step, len(texts))}/{len(texts)}", flush=True)
+    dim = len(rows[0]["vector"])
+    print(f"embedded {len(texts)} chunks in {time.time() - t2:.1f}s")
 
     stats = {
         "chunks": len(chunks),
         "peps": len({c.pep for c in chunks}),
         "embed_model": config.EMBED_MODEL,
-        "dim": int(vecs.shape[1]),
+        "dim": dim,
         "build_seconds": round(time.time() - t0, 1),
     }
     (index_dir / "stats.json").write_text(json.dumps(stats, indent=2))

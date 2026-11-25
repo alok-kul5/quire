@@ -15,9 +15,9 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Iterable, Iterator
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Iterable, Iterator
 
 from . import config
 
@@ -63,7 +63,7 @@ def parse_header(lines: list[str]) -> tuple[dict, int]:
     meta: dict[str, str] = {}
     key = None
     i = 0
-    for i, line in enumerate(lines):
+    for i, line in enumerate(lines):  # noqa: B007  (i is used after the loop)
         if not line.strip():
             break
         m = HEADER_FIELD.match(line)

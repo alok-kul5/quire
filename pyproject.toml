@@ -22,3 +22,9 @@ include = ["quire*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 170
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]

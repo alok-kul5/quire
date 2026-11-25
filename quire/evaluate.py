@@ -15,7 +15,7 @@ from pathlib import Path
 
 from . import config
 from .answer import answer, format_context
-from .metrics import heuristic_faithfulness, keyword_hit, parse_judge, reciprocal_rank, recall_at_k
+from .metrics import heuristic_faithfulness, keyword_hit, parse_judge, recall_at_k, reciprocal_rank
 from .retrieve import MODES, Retriever
 
 EVAL_DIR = config.ROOT / "evals"

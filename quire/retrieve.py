@@ -67,7 +67,7 @@ class Retriever:
 
         tokens = bm25s.tokenize([query], stopwords="en", show_progress=False)
         docs, scores = self.bm25.retrieve(tokens, k=n, show_progress=False)
-        return [int(d) for d, s in zip(docs[0], scores[0]) if s > 0]
+        return [int(d) for d, s in zip(docs[0], scores[0], strict=False) if s > 0]
 
     def dense_rows(self, query: str, n: int) -> list[int]:
         vec = self.embed.encode(config.EMBED_QUERY_PREFIX + query, normalize_embeddings=True)
@@ -105,7 +105,7 @@ class Retriever:
             s = time.perf_counter()
             scores = self.reranker.predict([(query, self.chunks[r].index_text) for r in pool], batch_size=32)
             t["rerank_ms"] = (time.perf_counter() - s) * 1000
-            fused = sorted(zip(pool, (float(x) for x in scores)), key=lambda kv: -kv[1])
+            fused = sorted(zip(pool, (float(x) for x in scores), strict=False), key=lambda kv: -kv[1])
             note("rerank", [r for r, _ in fused])
 
         self.timings = {key: round(v, 1) for key, v in t.items()}
