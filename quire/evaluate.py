@@ -94,6 +94,10 @@ def run_generation(retriever, questions: list[dict], llm, judge, mode: str = "re
                 f.write(json.dumps(row) + "\n")
         print(f"[{i}/{len(qs)}] {q['id']} refused={a.refused} {row.get('judge', {}).get('score', '-')} | {a.text[:90]!r}")
 
+    return {"summary": summarize(per, mode, llm.name, getattr(judge, "name", None)), "per_question": per}
+
+
+def summarize(per: list[dict], mode: str, model: str, judge_name: str | None) -> dict:
     ans = [r for r in per if r["answerable"]]
     unans = [r for r in per if not r["answerable"]]
     answered = [r for r in ans if not r["refused"]]
@@ -104,8 +108,8 @@ def run_generation(retriever, questions: list[dict], llm, judge, mode: str = "re
 
     summary = {
         "mode": mode,
-        "model": llm.name,
-        "judge": getattr(judge, "name", None),
+        "model": model,
+        "judge": judge_name,
         "n_answerable": len(ans),
         "n_unanswerable": len(unans),
         "answer_rate": mean(not r["refused"] for r in ans),
@@ -120,7 +124,20 @@ def run_generation(retriever, questions: list[dict], llm, judge, mode: str = "re
         "llm_p50_ms": round(statistics.median([r["llm_ms"] for r in per if r["llm_ms"]] or [0]), 1),
     }
     print(json.dumps(summary, indent=2))
-    return {"summary": summary, "per_question": per}
+    return summary
+
+
+def rescore(retriever) -> dict:
+    """Recompute the deterministic heuristic on saved answers (no LLM calls) after a metric fix."""
+    data = json.loads((RESULTS / "generation.json").read_text())
+    for r in data["per_question"]:
+        if r["answerable"] and not r["refused"]:
+            hits = retriever.search(r["question"], mode=data["summary"]["mode"])
+            h = heuristic_faithfulness(r["answer"], [x.chunk.text for x in hits])
+            r["heuristic"] = {k: v for k, v in h.items() if k != "rows"}
+    s = data["summary"]
+    data["summary"] = summarize(data["per_question"], s["mode"], s["model"], s["judge"])
+    return data
 
 
 def fmt(x, pct=True):
@@ -174,7 +191,7 @@ def write_report() -> Path:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("what", choices=["retrieval", "generation", "report"])
+    ap.add_argument("what", choices=["retrieval", "generation", "rescore", "report"])
     ap.add_argument("--limit", type=int)
     ap.add_argument("--no-judge", action="store_true")
     args = ap.parse_args()
@@ -184,7 +201,9 @@ def main() -> None:
         return
     questions = load_questions()
     retriever = Retriever()
-    if args.what == "retrieval":
+    if args.what == "rescore":
+        (RESULTS / "generation.json").write_text(json.dumps(rescore(retriever), indent=2))
+    elif args.what == "retrieval":
         res = run_retrieval(retriever, questions)
         (RESULTS / "retrieval.json").write_text(json.dumps(res, indent=2))
     else:

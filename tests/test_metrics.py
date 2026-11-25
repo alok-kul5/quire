@@ -29,3 +29,10 @@ def test_parse_judge_variants():
     assert parse_judge('Sure! {"score": 2, "faithful": "no"}')["faithful"] is False
     assert parse_judge("Score: 4 overall")["score"] == 4
     assert parse_judge("garbage")["score"] == 0
+
+
+def test_citation_after_period_stays_with_sentence():
+    passages = ["PEP 492 added async and await keywords for native coroutines."]
+    h = heuristic_faithfulness("PEP 492 added async and await for native coroutines. [1] It was accepted.", passages)
+    assert h["rows"][0]["cited"] and h["rows"][0]["supported"]
+    assert not h["rows"][1]["cited"]

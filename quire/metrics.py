@@ -36,7 +36,9 @@ def content_tokens(text: str) -> set[str]:
 
 
 def split_sentences(text: str) -> list[str]:
-    parts = re.split(r"(?<=[.!?])\s+(?=[A-Z0-9`\"'(])", text.strip())
+    # "claim. [1][2] Next" -> "claim [1][2]. Next" so trailing citations stay with their sentence
+    text = re.sub(r"([.!?])\s*((?:\[\d+\])+)", r" \2\1", text.strip())
+    parts = re.split(r"(?<=[.!?])\s+(?=[A-Z0-9`\"'(])", text)
     return [p for p in parts if len(p.split()) >= 3]
 
 
