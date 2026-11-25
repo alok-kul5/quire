@@ -1,0 +1,1891 @@
+{
+  "summary": {
+    "mode": "rerank",
+    "model": "qwen2.5:7b",
+    "judge": "gemma3:4b",
+    "n_answerable": 60,
+    "n_unanswerable": 10,
+    "answer_rate": 0.967,
+    "keyword_accuracy": 0.862,
+    "citation_rate": 1,
+    "citation_precision": 0.902,
+    "heuristic_supported": 0.841,
+    "judge_faithful": 1,
+    "judge_score": 4.554,
+    "judge_parse_failures": 2,
+    "refusal_rate_unanswerable": 1,
+    "false_refusal_rate": 0.033,
+    "llm_p50_ms": 58618.4
+  },
+  "per_question": [
+    {
+      "id": "q01",
+      "question": "What operator does the assignment expressions proposal introduce?",
+      "answerable": true,
+      "answer": "The assignment expressions proposal introduces the operator := [1].",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        572
+      ],
+      "top_score": 6.141,
+      "llm_ms": 11492.5,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.857
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The claim that the operator := is introduced by the assignment expressions proposal is supported by [1], but the phrasing 'introduces the operator' is a slight wording drift. It states the proposal 'there is also an update to dictionary comprehension evaluation order to ensure key expressions are executed before value expressions'."
+        ]
+      }
+    },
+    {
+      "id": "q02",
+      "question": "How many spaces per indentation level does the Python style guide recommend?",
+      "answerable": true,
+      "answer": "The Python style guide recommends using 4 spaces per indentation level. [1][3]",
+      "refused": false,
+      "citations": [
+        1,
+        3
+      ],
+      "cited_peps": [
+        8,
+        3100
+      ],
+      "top_score": 7.149,
+      "llm_ms": 28505.0,
+      "keyword_hit": true,
+      "citation_precision": 0.5,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.889
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q03",
+      "question": "What is the maximum line length recommended by the Python style guide?",
+      "answerable": true,
+      "answer": "The maximum line length recommended by the Python style guide is 79 characters for most code, with a limit of 99 characters for code maintained by a team that agrees to this longer limit [1][2].",
+      "refused": false,
+      "citations": [
+        1,
+        2
+      ],
+      "cited_peps": [
+        8
+      ],
+      "top_score": 8.213,
+      "llm_ms": 34873.1,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.765
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The maximum line length is 79 characters for most code, with a limit of 99 characters for code maintained by a team that agrees to this longer limit"
+        ]
+      }
+    },
+    {
+      "id": "q04",
+      "question": "Which PEP introduced f-strings, also called literal string interpolation?",
+      "answerable": true,
+      "answer": "PEP 498 introduced f-strings, also called literal string interpolation. [1][3]",
+      "refused": false,
+      "citations": [
+        1,
+        3
+      ],
+      "cited_peps": [
+        502,
+        536
+      ],
+      "top_score": 9.179,
+      "llm_ms": 47124.3,
+      "keyword_hit": true,
+      "citation_precision": 0.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.9
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The answer mentions 'literal string interpolation' which is a term used in PEP 498, but not explicitly stated in the passages."
+        ]
+      }
+    },
+    {
+      "id": "q05",
+      "question": "What keyword pair did PEP 492 add for native coroutines?",
+      "answerable": true,
+      "answer": "PEP 492 added the async and await keyword pair for native coroutines. [1][5]",
+      "refused": false,
+      "citations": [
+        1,
+        5
+      ],
+      "cited_peps": [
+        492
+      ],
+      "top_score": 6.772,
+      "llm_ms": 73329.5,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.667
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The answer states that PEP 492 added the async and await keyword pair, which is supported by [1] and [5], but doesn't mention the specific reasons or details outlined in the passages."
+        ]
+      }
+    },
+    {
+      "id": "q06",
+      "question": "What syntax did structural pattern matching add to Python?",
+      "answerable": true,
+      "answer": "Structural pattern matching added a pattern matching statement to Python [1]. This statement builds on Python\u2019s existing syntax for sequence unpacking and allows for matching values against various patterns [3].",
+      "refused": false,
+      "citations": [
+        1,
+        3
+      ],
+      "cited_peps": [
+        622
+      ],
+      "top_score": 8.531,
+      "llm_ms": 40418.4,
+      "keyword_hit": true,
+      "citation_precision": 0.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.6905
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The answer states that the statement 'builds on Python\u2019s existing syntax for sequence unpacking', but this is only mentioned in passing in passage [3] and doesn't fully explain the core functionality."
+        ]
+      }
+    },
+    {
+      "id": "q07",
+      "question": "What does the yield from expression do according to its PEP?",
+      "answerable": true,
+      "answer": "According to PEP 380 [1], the yield from expression delegates to a subgenerator. It allows the delegating generator to yield and receive values directly from or to the subgenerator. When the subgenerator completes, it can return a value, which becomes the value of the yield from expression.",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        380
+      ],
+      "top_score": 5.278,
+      "llm_ms": 38128.7,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 3,
+        "cited_rate": 0.3333333333333333,
+        "supported_rate": 0.3333333333333333,
+        "mean_overlap": 0.20833333333333334
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The answer states 'It allows the delegating generator to yield and receive values directly from or to the subgenerator.' This is supported by [1], but the phrasing is slightly more detailed than the original text. It could be considered a minor wording drift."
+        ]
+      }
+    },
+    {
+      "id": "q08",
+      "question": "Which operator was proposed for matrix multiplication?",
+      "answerable": true,
+      "answer": "The operator proposed for matrix multiplication is @ [1].",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        465
+      ],
+      "top_score": 9.272,
+      "llm_ms": 53679.4,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.667
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q09",
+      "question": "How are positional-only parameters marked in a function definition?",
+      "answerable": true,
+      "answer": "Positional-only parameters are marked in a function definition by placing them before a forward-slash (/). Parameters following the / may be positional-or-keyword or keyword-only. [1][2][4]",
+      "refused": false,
+      "citations": [
+        1,
+        2,
+        4
+      ],
+      "cited_peps": [
+        457,
+        570
+      ],
+      "top_score": 7.927,
+      "llm_ms": 78593.2,
+      "keyword_hit": true,
+      "citation_precision": 0.6666666666666666,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 0.5,
+        "supported_rate": 0.5,
+        "mean_overlap": 0.5
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q10",
+      "question": "What is the Zen of Python and which PEP contains it?",
+      "answerable": true,
+      "answer": "The Zen of Python is a collection of 19 guiding principles for Python's design, written by Tim Peters [1][2]. It is contained within PEP 20 [2].",
+      "refused": false,
+      "citations": [
+        1,
+        2
+      ],
+      "cited_peps": [
+        20
+      ],
+      "top_score": 5.636,
+      "llm_ms": 114057.6,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 0.5,
+        "mean_overlap": 0.5415
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "It is contained within PEP 20 [2].",
+          "It is a collection of 19 guiding principles for Python's design, written by Tim Peters [1][2]."
+        ]
+      }
+    },
+    {
+      "id": "q11",
+      "question": "What is the purpose of the pyproject.toml build-system table?",
+      "answerable": true,
+      "answer": "The purpose of the pyproject.toml build-system table is to store build-related data, specifically to list the PEP 508 dependencies required to execute the build system, with an initial example using \"setuptools\" as the requirement for most Python projects relying on setuptools [1].",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        518
+      ],
+      "top_score": 5.525,
+      "llm_ms": 48513.9,
+      "keyword_hit": false,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.731
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q12",
+      "question": "Which PEP defines the standard for type hints and the typing module?",
+      "answerable": true,
+      "answer": "PEP 484 defines the standard for type hints and the typing module [3][5].",
+      "refused": false,
+      "citations": [
+        3,
+        5
+      ],
+      "cited_peps": [
+        484
+      ],
+      "top_score": 7.335,
+      "llm_ms": 61860.0,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.875
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The answer states that PEP 484 defines the standard for type hints, but it only cites passage [3] which discusses the typing module and doesn't explicitly state that it defines the standard for type hints."
+        ]
+      }
+    },
+    {
+      "id": "q13",
+      "question": "What syntax was proposed for annotating the types of variables?",
+      "answerable": true,
+      "answer": "The syntax proposed for annotating the types of variables involves using a colon followed by the type annotation, such as `var: type`. This can be used for class and instance variables within class bodies and methods [2][3]. For example, `captain: str` or `stats: ClassVar[Dict[str, int]] = {}` [2].",
+      "refused": false,
+      "citations": [
+        2,
+        3
+      ],
+      "cited_peps": [
+        526
+      ],
+      "top_score": 7.183,
+      "llm_ms": 86435.0,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 3,
+        "cited_rate": 0.6666666666666666,
+        "supported_rate": 0.6666666666666666,
+        "mean_overlap": 0.5806666666666667
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "\"using a colon followed by the type annotation, such as `var: type`\" - This is stated in passage [3] but not the primary focus of the passage.",
+          "\"This can be used for class and instance variables within class bodies and methods [2][3]\" - While passages [2] and [3] discuss this, the phrasing is slightly misleading as it doesn't fully capture the nuances of the syntax and its application."
+        ]
+      }
+    },
+    {
+      "id": "q14",
+      "question": "What does PEP 703 propose about the global interpreter lock?",
+      "answerable": true,
+      "answer": "PEP 703 proposes adding a build configuration (--disable-gil) to CPython to run Python code without the global interpreter lock, and includes changes needed to make the interpreter thread-safe [1].",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        703
+      ],
+      "top_score": 9.214,
+      "llm_ms": 123804.2,
+      "keyword_hit": false,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.88
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q15",
+      "question": "What union type syntax using the pipe character was added for type hints?",
+      "answerable": true,
+      "answer": "PEP 604 added the syntax `X | Y` for union types, allowing a more concise way to define union types in type hints [1][3].",
+      "refused": false,
+      "citations": [
+        1,
+        3
+      ],
+      "cited_peps": [
+        604
+      ],
+      "top_score": 3.831,
+      "llm_ms": 121571.4,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 0.0,
+        "mean_overlap": 0.4
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q16",
+      "question": "What does the walrus operator's PEP say about using it at the top level of an expression statement?",
+      "answerable": true,
+      "answer": "PEP 572 states that unparenthesized assignment expressions are prohibited at the top level of an expression statement [4].",
+      "refused": false,
+      "citations": [
+        4
+      ],
+      "cited_peps": [
+        572
+      ],
+      "top_score": 3.442,
+      "llm_ms": 90514.1,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.818
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "PEP 572 states that unparenthesized assignment expressions are prohibited at the top level of an expression statement [4]"
+        ]
+      }
+    },
+    {
+      "id": "q17",
+      "question": "When did Python 2.7 reach its end of life according to its release schedule?",
+      "answerable": true,
+      "answer": "According to PEP 373 [1], Python 2.7 reached its end-of-life in 2020.",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        373
+      ],
+      "top_score": 8.655,
+      "llm_ms": 82791.1,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.636
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q18",
+      "question": "What naming convention should class names follow in the style guide?",
+      "answerable": true,
+      "answer": "Class names should normally use the CapWords convention [1].",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        8
+      ],
+      "top_score": 7.45,
+      "llm_ms": 54443.0,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 1.0
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q19",
+      "question": "What are data classes and which decorator generates their special methods?",
+      "answerable": true,
+      "answer": "Data classes are a type of class that can be thought of as \"mutable namedtuples with defaults\" [1]. They use a class decorator, `@dataclass`, provided by the `dataclasses` module, which generates special methods like `__init__`, `__repr__`, `__eq__`, and others based on the fields defined in the class [1][3].",
+      "refused": false,
+      "citations": [
+        1,
+        3
+      ],
+      "cited_peps": [
+        557
+      ],
+      "top_score": 5.72,
+      "llm_ms": 33662.0,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.771
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q20",
+      "question": "Which PEP added the breakpoint() built-in function?",
+      "answerable": true,
+      "answer": "PEP 553 added the breakpoint() built-in function. [1]",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        553
+      ],
+      "top_score": 9.199,
+      "llm_ms": 101423.7,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.875
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q21",
+      "question": "What environment variable can be used to control what breakpoint() calls?",
+      "answerable": true,
+      "answer": "The environment variable PYTHONBREAKPOINT can be used to control what breakpoint() calls. It can have different values such as disabling debugging, using pdb.set_trace(), or importing a callable object [1][2].",
+      "refused": false,
+      "citations": [
+        1,
+        2
+      ],
+      "cited_peps": [
+        553
+      ],
+      "top_score": 5.935,
+      "llm_ms": 34132.3,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 0.5,
+        "supported_rate": 0.5,
+        "mean_overlap": 0.357
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q22",
+      "question": "How does the wheel binary package format name its files?",
+      "answerable": true,
+      "answer": "The wheel binary package format names its files according to the convention {distribution}-{version}(-{build tag})?-{python tag}-{abi tag}-{platform tag}.whl, where distribution is the package name, version is the package version, build tag is an optional build number, python tag indicates the Python version compatibility, abi tag specifies the ABI compatibility, and platform tag denotes the platform compatibility. [4]",
+      "refused": false,
+      "citations": [
+        4
+      ],
+      "cited_peps": [
+        427
+      ],
+      "top_score": 7.694,
+      "llm_ms": 65489.2,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.733
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q23",
+      "question": "What is the purpose of the Protocol class for structural subtyping?",
+      "answerable": true,
+      "answer": "The Protocol class supports structural subtyping (static duck typing), allowing classes to be considered subtypes of a protocol based on their attributes and methods, rather than through explicit inheritance [2][5]. This enables more flexible and dynamic type checking without requiring nominal subtyping [2][5].",
+      "refused": false,
+      "citations": [
+        2,
+        5
+      ],
+      "cited_peps": [
+        544
+      ],
+      "top_score": 5.882,
+      "llm_ms": 32692.2,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.5760000000000001
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q24",
+      "question": "What does the TypedDict proposal allow you to type?",
+      "answerable": true,
+      "answer": "The TypedDict proposal allows you to type dictionary objects with a specific set of string keys, each with a value of a specific type [4][5].",
+      "refused": false,
+      "citations": [
+        4,
+        5
+      ],
+      "cited_peps": [
+        589
+      ],
+      "top_score": 6.625,
+      "llm_ms": 107502.3,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.846
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "\"allows you to type dictionary objects\" - This is implied but not explicitly stated in the passages."
+        ]
+      }
+    },
+    {
+      "id": "q25",
+      "question": "What did PEP 3107 introduce for functions?",
+      "answerable": true,
+      "answer": "PEP 3107 introduced a syntax for adding arbitrary metadata annotations to Python functions [1].",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        3107
+      ],
+      "top_score": 8.007,
+      "llm_ms": 43655.4,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.778
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q26",
+      "question": "Why did Python 3 change print from a statement to a function?",
+      "answerable": true,
+      "answer": "The change was made because print is the only application-level functionality with a dedicated statement, which is generally avoided in Python [5]. Additionally, replacing print with more sophisticated output methods is easier with a function [5]. The print statement also posed a barrier to language evolution [5][4].",
+      "refused": false,
+      "citations": [
+        4,
+        5
+      ],
+      "cited_peps": [
+        214,
+        3105
+      ],
+      "top_score": 5.751,
+      "llm_ms": 44252.5,
+      "keyword_hit": true,
+      "citation_precision": 0.5,
+      "heuristic": {
+        "sentences": 3,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.742
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "\u201cPython Regrets\u201d presentation\u201d - This phrase is not directly supported by any of the passages."
+        ]
+      }
+    },
+    {
+      "id": "q27",
+      "question": "What is the Final qualifier used for in typing?",
+      "answerable": true,
+      "answer": "The Final qualifier in typing is used to indicate that a variable or attribute should not be reassigned, redefined, or overridden [1][5].",
+      "refused": false,
+      "citations": [
+        1,
+        5
+      ],
+      "cited_peps": [
+        591
+      ],
+      "top_score": 9.346,
+      "llm_ms": 30599.2,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 1.0
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q28",
+      "question": "What does the Literal type let you express?",
+      "answerable": true,
+      "answer": "The Literal type allows you to express that a variable or function parameter must have a specific and concrete value. For example, you can define a function that accepts only the value \"4\" using `Literal[4]` [1][3].",
+      "refused": false,
+      "citations": [
+        1,
+        3,
+        4
+      ],
+      "cited_peps": [
+        586
+      ],
+      "top_score": 3.83,
+      "llm_ms": 94152.6,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 0.5,
+        "supported_rate": 0.5,
+        "mean_overlap": 0.375
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The Literal type allows you to express that a variable or function parameter must have a specific and concrete value."
+        ]
+      }
+    },
+    {
+      "id": "q29",
+      "question": "Which PEP introduced exception groups and except*?",
+      "answerable": true,
+      "answer": "PEP 654 introduced exception groups and except* [1][2].",
+      "refused": false,
+      "citations": [
+        1,
+        2
+      ],
+      "cited_peps": [
+        654
+      ],
+      "top_score": 8.604,
+      "llm_ms": 51459.4,
+      "keyword_hit": false,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.857
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q30",
+      "question": "What did PEP 678 add to exceptions?",
+      "answerable": true,
+      "answer": "PEP 678 added a method `BaseException.add_note(note)` and a `.__notes__` attribute to hold a list of notes for exception objects [1].",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        678
+      ],
+      "top_score": 8.184,
+      "llm_ms": 86656.3,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.611
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q31",
+      "question": "What new syntax for generic classes and type aliases did PEP 695 introduce?",
+      "answerable": true,
+      "answer": "PEP 695 introduced a new syntax for specifying type parameters within generic classes, functions, and type aliases [2]. This syntax includes a comma-delimited list of type parameters in square brackets after the name of the class, function, or type alias [5].",
+      "refused": false,
+      "citations": [
+        2,
+        5
+      ],
+      "cited_peps": [
+        695
+      ],
+      "top_score": 8.676,
+      "llm_ms": 80986.5,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.8274999999999999
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "This syntax includes a comma-delimited list of type parameters in square brackets after the name of the class, function, or type alias [5]"
+        ]
+      }
+    },
+    {
+      "id": "q32",
+      "question": "What is the Self type used for?",
+      "answerable": true,
+      "answer": "The Self type is used for several purposes including annotating parameters that expect instances of the current class [1], annotating attributes to enforce type constraints [5], and in method signatures to represent the class type within methods [6].",
+      "refused": false,
+      "citations": [
+        1,
+        5,
+        6
+      ],
+      "cited_peps": [
+        673
+      ],
+      "top_score": 6.726,
+      "llm_ms": 113358.1,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.636
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "annotating attributes to enforce type constraints"
+        ]
+      }
+    },
+    {
+      "id": "q33",
+      "question": "How did dictionary merge and update operators work in the proposal that added them?",
+      "answerable": true,
+      "answer": "The proposal added merge (|) and update (|=) operators to the built-in dict class [1]. These operators were proposed for dict update operations, with the |= augmented assignment operator working as a side-effect of how augmented assignments are defined [2]. For dict merge operations, the | operator was proposed as the obvious way to do it [2][3].",
+      "refused": false,
+      "citations": [
+        1,
+        2,
+        3
+      ],
+      "cited_peps": [
+        584
+      ],
+      "top_score": 4.058,
+      "llm_ms": 62586.4,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 3,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.8566666666666666
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The proposal added merge (|) and update (|=) operators to the built-in dict class [1]"
+        ]
+      }
+    },
+    {
+      "id": "q34",
+      "question": "Which string methods remove a prefix or suffix?",
+      "answerable": true,
+      "answer": "The string methods proposed to remove a prefix or suffix are removeprefix() and removesuffix(). [1]",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        616
+      ],
+      "top_score": 9.669,
+      "llm_ms": 92333.5,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.9
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q35",
+      "question": "What is the release cadence for Python after PEP 602?",
+      "answerable": true,
+      "answer": "The release cadence for Python after PEP 602 is feature versions released predictably every twelve months, in October every year [5].",
+      "refused": false,
+      "citations": [
+        5
+      ],
+      "cited_peps": [
+        602
+      ],
+      "top_score": 7.627,
+      "llm_ms": 64271.0,
+      "keyword_hit": false,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.867
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q36",
+      "question": "What is the zoneinfo module and what data does it use?",
+      "answerable": true,
+      "answer": "The zoneinfo module is a Python module that provides a concrete time zone implementation supporting the IANA time zone database [1]. By default, it uses the system's time zone data if available, and falls back to using the tzdata package from PyPI if no system time zone data is available [1][5].",
+      "refused": false,
+      "citations": [
+        1,
+        5
+      ],
+      "cited_peps": [
+        615
+      ],
+      "top_score": 6.405,
+      "llm_ms": 96703.5,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.892
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q37",
+      "question": "What is the import system's spec object called that PEP 451 introduced?",
+      "answerable": true,
+      "answer": "PEP 451 introduced a new class called \"ModuleSpec\" to importlib.machinery as the spec object for the import system. [2]",
+      "refused": false,
+      "citations": [
+        2
+      ],
+      "cited_peps": [
+        451
+      ],
+      "top_score": 6.414,
+      "llm_ms": 64745.2,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.714
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q38",
+      "question": "What are namespace packages without __init__.py called?",
+      "answerable": true,
+      "answer": "Namespace packages without __init__.py are called implicit namespace packages [1][4].",
+      "refused": false,
+      "citations": [
+        1,
+        4
+      ],
+      "cited_peps": [
+        420
+      ],
+      "top_score": 6.361,
+      "llm_ms": 177898.7,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.714
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q39",
+      "question": "What does the with statement do and which PEP defined it?",
+      "answerable": true,
+      "answer": "The with statement is designed to manage resources by factoring out try/finally and some try/except/else boilerplate code [3][5]. It was defined in PEP 346 [1][2][3][5].",
+      "refused": false,
+      "citations": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "cited_peps": [
+        346
+      ],
+      "top_score": 6.806,
+      "llm_ms": 109411.3,
+      "keyword_hit": false,
+      "citation_precision": 0.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.8335
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q40",
+      "question": "What decorator syntax was introduced for functions and methods?",
+      "answerable": true,
+      "answer": "The decorator syntax introduced for functions and methods in Python 2.4a2 is:: @dec2 @dec1 def func(arg1, arg2,...): pass [3][4]",
+      "refused": false,
+      "citations": [
+        3,
+        4
+      ],
+      "cited_peps": [
+        318
+      ],
+      "top_score": 7.406,
+      "llm_ms": 137708.8,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.818
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The answer states that the syntax was introduced in 2.4a2, which is supported by passages [3][4].",
+          "The answer mentions 'dec2' and 'dec1', which are not explicitly defined in the provided passages, although they are referenced."
+        ]
+      }
+    },
+    {
+      "id": "q41",
+      "question": "How should docstrings be formatted according to the docstring conventions?",
+      "answerable": true,
+      "answer": "Docstrings should be formatted using triple double quotes and should include a summary line for one-line docstrings, or a summary line followed by a blank line and a more elaborate description for multi-line docstrings [2][4]. They should be readable and contain sufficient information for conversion to markup formats [6].",
+      "refused": false,
+      "citations": [
+        2,
+        4,
+        6
+      ],
+      "cited_peps": [
+        216,
+        257
+      ],
+      "top_score": 6.632,
+      "llm_ms": 48708.0,
+      "keyword_hit": true,
+      "citation_precision": 0.6666666666666666,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.7915
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "They should be formatted using triple double quotes"
+        ]
+      }
+    },
+    {
+      "id": "q42",
+      "question": "What is the purpose of the __future__ module statements?",
+      "answerable": true,
+      "answer": "The purpose of __future__ module statements is to allow code to be written using features that will be part of future Python releases, while still being compatible with the current version. This makes it easier for developers to adopt new features gradually [1][5].",
+      "refused": false,
+      "citations": [
+        1,
+        5
+      ],
+      "cited_peps": [
+        236
+      ],
+      "top_score": 6.622,
+      "llm_ms": 57033.2,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 0.5,
+        "supported_rate": 0.0,
+        "mean_overlap": 0.125
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "\"while your problems are much harder to solve\""
+        ]
+      }
+    },
+    {
+      "id": "q43",
+      "question": "What does the Python Steering Council consist of?",
+      "answerable": true,
+      "answer": "The Python Steering Council consists of a 5-person committee, with current members including Barry Warsaw, Donghee Na, Pablo Galindo Salgado, Savannah Ostrowski, and Thomas Wouters, as per the results of the vote tracked in PEP 8107 [1][2].",
+      "refused": false,
+      "citations": [
+        1,
+        2
+      ],
+      "cited_peps": [
+        13
+      ],
+      "top_score": 7.979,
+      "llm_ms": 46495.8,
+      "keyword_hit": false,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.846
+      },
+      "judge": {
+        "score": 0,
+        "faithful": false,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q44",
+      "question": "What are the possible statuses of a PEP during its lifecycle?",
+      "answerable": true,
+      "answer": "The possible statuses of a PEP during its lifecycle include Active, Rejected, and Withdrawn. PEPs can also be superseded by a different PEP, making the original obsolete. [1]",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        1
+      ],
+      "top_score": -0.404,
+      "llm_ms": 102786.5,
+      "keyword_hit": false,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 0.5,
+        "supported_rate": 0.5,
+        "mean_overlap": 0.5
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The answer mentions 'Rejected' and 'Withdrawn' as statuses, but passage [1] only explicitly states 'Accepted', 'Rejected', and 'Withdrawn' can occur after acceptance due to design flaws."
+        ]
+      }
+    },
+    {
+      "id": "q45",
+      "question": "What comment block format does inline script metadata use in single-file scripts?",
+      "answerable": true,
+      "answer": "The inline script metadata in single-file Python scripts uses a metadata comment block format loosely inspired by reStructuredText Directives [2]. This format starts with a line containing a single #, followed by a single space, followed by three forward slashes, followed by a single space, and ends with a line containing a single # followed by three forward slashes [2].",
+      "refused": false,
+      "citations": [
+        2
+      ],
+      "cited_peps": [
+        723
+      ],
+      "top_score": 6.924,
+      "llm_ms": 89738.5,
+      "keyword_hit": false,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.775
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q46",
+      "question": "What is the externally managed environment marker file?",
+      "answerable": true,
+      "answer": "The externally managed environment marker file is named EXTERNALLY-MANAGED and is an INI-style metadata file intended to be parsable by the standard library configparser module [2][4]. It is specified to live in the stdlib directory in the default sysconfig scheme, marking the interpreter/installation as a whole, not a particular location on sys.path [4].",
+      "refused": false,
+      "citations": [
+        2,
+        4
+      ],
+      "cited_peps": [
+        668
+      ],
+      "top_score": 7.236,
+      "llm_ms": 56180.7,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.972
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q47",
+      "question": "How does the core metadata field for license expressions work using SPDX?",
+      "answerable": true,
+      "answer": "The core metadata field for license expressions uses the SPDX license expression syntax to unambiguously describe a project's license. Tools are expected to validate and perform case normalization of the expression [1][4].",
+      "refused": false,
+      "citations": [
+        1,
+        4
+      ],
+      "cited_peps": [
+        639
+      ],
+      "top_score": 6.952,
+      "llm_ms": 72763.6,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 0.5,
+        "supported_rate": 0.5,
+        "mean_overlap": 0.4375
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q48",
+      "question": "Does Python preserve the order of **kwargs passed to a function, and which PEP guarantees it?",
+      "answerable": true,
+      "answer": "Starting in Python 3.6, the order of **kwargs is preserved [1]. This is guaranteed by PEP 468 [1][2].",
+      "refused": false,
+      "citations": [
+        1,
+        2
+      ],
+      "cited_peps": [
+        468
+      ],
+      "top_score": 8.735,
+      "llm_ms": 43582.5,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 0.5,
+        "mean_overlap": 0.611
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "This is guaranteed by PEP 468 [1][2]"
+        ]
+      }
+    },
+    {
+      "id": "q49",
+      "question": "What does keyword-only arguments syntax look like?",
+      "answerable": true,
+      "answer": "Keyword-only arguments syntax looks like this: `def name(positional_only_parameters, /, positional_or_keyword_parameters, *, keyword_only_parameters):` [1][2] [6]",
+      "refused": false,
+      "citations": [
+        1,
+        2,
+        6
+      ],
+      "cited_peps": [
+        457,
+        570,
+        3102
+      ],
+      "top_score": 5.945,
+      "llm_ms": 43995.7,
+      "keyword_hit": true,
+      "citation_precision": 0.3333333333333333,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.889
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q50",
+      "question": "Why was the Python 3 str and bytes split made?",
+      "answerable": true,
+      "answer": "I can't answer that from the PEPs I retrieved. Try rephrasing, or name the PEP you mean.",
+      "refused": true,
+      "citations": [],
+      "cited_peps": [],
+      "top_score": 4.516,
+      "llm_ms": 33521.1
+    },
+    {
+      "id": "q51",
+      "question": "What does the per-interpreter GIL proposal change?",
+      "answerable": true,
+      "answer": "The per-interpreter GIL proposal changes CPython by stopping the sharing of the GIL between interpreters when sufficient isolation is provided [1], moving global runtime state into specific interpreter states [2], and updating the C-API and extension module restrictions [2][4].",
+      "refused": false,
+      "citations": [
+        1,
+        2,
+        4
+      ],
+      "cited_peps": [
+        684
+      ],
+      "top_score": 8.298,
+      "llm_ms": 57230.7,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.769
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "moving global runtime state into specific interpreter states"
+        ]
+      }
+    },
+    {
+      "id": "q52",
+      "question": "What are the semantics of the asyncio event loop's pluggable design described in PEP 3156?",
+      "answerable": true,
+      "answer": "The pluggable design of the asyncio event loop in PEP 3156 occurs at the event loop level, not the scheduler level [2][3]. The standard scheduler implementation should work with any conforming event loop implementation, making it a litmus test for such implementations [2][3].",
+      "refused": false,
+      "citations": [
+        2,
+        3
+      ],
+      "cited_peps": [
+        3156
+      ],
+      "top_score": 5.453,
+      "llm_ms": 21847.1,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.825
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q53",
+      "question": "What is the ParamSpec type variable for?",
+      "answerable": true,
+      "answer": "The ParamSpec type variable is used to capture the parameters of a callable, distinguishing them from the arguments passed to a specific call site [1]. It allows for more flexible and generic type annotations, especially in cases where the exact number and types of arguments are not known at the time of writing the code [2][3].",
+      "refused": false,
+      "citations": [
+        1,
+        2,
+        3
+      ],
+      "cited_peps": [
+        612
+      ],
+      "top_score": 4.935,
+      "llm_ms": 58522.9,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 0.5,
+        "mean_overlap": 0.4135
+      },
+      "judge": {
+        "score": 0,
+        "faithful": false,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q54",
+      "question": "What do the TypeGuard user-defined type guards do?",
+      "answerable": true,
+      "answer": "TypeGuard user-defined type guards are functions that return a bool value and are used to narrow the type of an expression based on the return value. Specifically, the type is narrowed in the positive case (if the function returns True) but not in the negative case (if the function returns False) [1][3][4]. These functions can be generic and are used to validate the type of an expression, such as checking if a tuple has two elements [1][3].",
+      "refused": false,
+      "citations": [
+        1,
+        3,
+        4
+      ],
+      "cited_peps": [
+        647,
+        724
+      ],
+      "top_score": 7.597,
+      "llm_ms": 19748.0,
+      "keyword_hit": true,
+      "citation_precision": 0.6666666666666666,
+      "heuristic": {
+        "sentences": 3,
+        "cited_rate": 0.6666666666666666,
+        "supported_rate": 0.6666666666666666,
+        "mean_overlap": 0.5403333333333333
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The claim that TypeGuard functions return a bool value is supported, but the phrasing 'based on the return value' is a slight wording drift from the passages.",
+          "The claim that these functions can be generic is supported, but the passage only provides an example of a generic function."
+        ]
+      }
+    },
+    {
+      "id": "q55",
+      "question": "How do variadic generics with TypeVarTuple work?",
+      "answerable": true,
+      "answer": "Variadic generics with TypeVarTuple allow the creation of generic types that can accept an arbitrary number of type arguments. For example, a TypeVarTuple can be used as a type argument in a generic alias, enabling the alias to represent a tuple of types. This is useful for types like array-like structures in numerical computing libraries, where the type can be parameterized with an array shape [1][2]. Variadic type arguments can only be used with variadic generic aliases [3]. TypeVarTuple serves as a placeholder for a tuple of types, and the star operator can be used to 'unpack' TypeVarTuple instances and tuple types [4][6].",
+      "refused": false,
+      "citations": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "cited_peps": [
+        646
+      ],
+      "top_score": 6.776,
+      "llm_ms": 85749.7,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 5,
+        "cited_rate": 0.6,
+        "supported_rate": 0.6,
+        "mean_overlap": 0.556
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q56",
+      "question": "What is the enum module's base class, and which PEP added it?",
+      "answerable": true,
+      "answer": "I can't answer that from the PEPs I retrieved. Try rephrasing, or name the PEP you mean.",
+      "refused": true,
+      "citations": [],
+      "cited_peps": [],
+      "top_score": 5.081,
+      "llm_ms": 25040.2
+    },
+    {
+      "id": "q57",
+      "question": "What is pathlib and why was it proposed?",
+      "answerable": true,
+      "answer": "pathlib is a module intended to provide a simple hierarchy of classes to handle filesystem paths and common operations over them [2]. It was proposed to address issues with existing approaches and to provide a more user-friendly API for filesystem path handling [4].",
+      "refused": false,
+      "citations": [
+        2,
+        4
+      ],
+      "cited_peps": [
+        428
+      ],
+      "top_score": 4.442,
+      "llm_ms": 58714.0,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 1.0,
+        "supported_rate": 0.5,
+        "mean_overlap": 0.676
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q58",
+      "question": "Which PEP proposes the statistics module?",
+      "answerable": true,
+      "answer": "PEP 450 proposes the statistics module. [1]",
+      "refused": false,
+      "citations": [
+        1
+      ],
+      "cited_peps": [
+        450
+      ],
+      "top_score": 7.827,
+      "llm_ms": 50861.3,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 1,
+        "cited_rate": 1.0,
+        "supported_rate": 1.0,
+        "mean_overlap": 0.8
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "q59",
+      "question": "How does the PEP for deferred evaluation of annotations change when annotations are evaluated?",
+      "answerable": true,
+      "answer": "When annotations are evaluated with this PEP, the evaluation is deferred until the `__annotations__` attribute is referenced. This means annotations are evaluated in a new function context rather than the original context where the object was bound [2][3].",
+      "refused": false,
+      "citations": [
+        2,
+        3
+      ],
+      "cited_peps": [
+        649
+      ],
+      "top_score": 8.238,
+      "llm_ms": 185232.8,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 0.5,
+        "supported_rate": 0.5,
+        "mean_overlap": 0.5
+      },
+      "judge": {
+        "score": 4,
+        "faithful": true,
+        "unsupported": [
+          "The claim that 'annotations are evaluated in a new function context' is a slight wording drift from the passages. It's more accurate to say they are evaluated in a function called `annotate_foo()`."
+        ]
+      }
+    },
+    {
+      "id": "q60",
+      "question": "What does the override decorator in typing do?",
+      "answerable": true,
+      "answer": "The @typing.override decorator is used to mark method overrides in subclasses, helping type checkers identify which methods are overriding functionality from a base class. When a method is decorated with @typing.override, type checkers treat it as a type error unless the method is actually overriding a compatible method or attribute in an ancestor class [5].",
+      "refused": false,
+      "citations": [
+        5
+      ],
+      "cited_peps": [
+        698
+      ],
+      "top_score": 7.889,
+      "llm_ms": 71967.1,
+      "keyword_hit": true,
+      "citation_precision": 1.0,
+      "heuristic": {
+        "sentences": 2,
+        "cited_rate": 0.5,
+        "supported_rate": 0.5,
+        "mean_overlap": 0.472
+      },
+      "judge": {
+        "score": 5,
+        "faithful": true,
+        "unsupported": []
+      }
+    },
+    {
+      "id": "u01",
+      "question": "What port does the Django development server listen on by default?",
+      "answerable": false,
+      "answer": "I can't answer that from the PEPs I retrieved. Try rephrasing, or name the PEP you mean.",
+      "refused": true,
+      "citations": [],
+      "cited_peps": [],
+      "top_score": -0.875,
+      "llm_ms": 50106.8
+    },
+    {
+      "id": "u02",
+      "question": "Who won the 2018 FIFA World Cup?",
+      "answerable": false,
+      "answer": "I can't answer that from the PEPs I retrieved. Try rephrasing, or name the PEP you mean.",
+      "refused": true,
+      "citations": [],
+      "cited_peps": [],
+      "top_score": -10.058,
+      "llm_ms": 0.0
+    },
+    {
+      "id": "u03",
+      "question": "How do I configure gradient checkpointing in PyTorch Lightning?",
+      "answerable": false,
+      "answer": "I can't answer that from the PEPs I retrieved. Try rephrasing, or name the PEP you mean.",
+      "refused": true,
+      "citations": [],
+      "cited_peps": [],
+      "top_score": -5.549,
+      "llm_ms": 0.0
+    },
+    {
+      "id": "u04",
+      "question": "What is the price of a Raspberry Pi 5?",
+      "answerable": false,
+      "answer": "I can't answer that from the PEPs I retrieved. Try rephrasing, or name the PEP you mean.",
+      "refused": true,
+      "citations": [],
+      "cited_peps": [],
+      "top_score": -9.721,
+      "llm_ms": 0.0
+    },
+    {
+      "id": "u05",
+      "question": "Which React hook is used for side effects?",
+      "answerable": false,
+      "answer": "I can't answer that from the PEPs I retrieved. Try rephrasing, or name the PEP you mean.",
+      "refused": true,
+      "citations": [],
+      "cited_peps": [],
+      "top_score": -1.987,
+      "llm_ms": 30130.9
+    },
+    {
+      "id": "u06",
+      "question": "What is the recommended dosage of ibuprofen for adults?",
+      "answerable": false,
+      "answer": "I can't answer that from the PEPs I retrieved. Try rephrasing, or name the PEP you mean.",
+      "refused": true,
+      "citations": [],
+      "cited_peps": [],
+      "top_score": -11.031,
+      "llm_ms": 0.0
+    },
+    {
+      "id": "u07",
+      "question": "How many moons does Jupiter have?",
+      "answerable": false,
+      "answer": "I can't answer that from the PEPs I retrieved. Try rephrasing, or name the PEP you mean.",
+      "refused": true,
+      "citations": [],
+      "cited_peps": [],
+      "top_score": -11.2,
+      "llm_ms": 0.0
+    },
+    {
+      "id": "u08",
+      "question": "What does the Kubernetes kubelet do on a node?",
+      "answerable": false,
+      "answer": "I can't answer that from the PEPs I retrieved. Try rephrasing, or name the PEP you mean.",
+      "refused": true,
+      "citations": [],
+      "cited_peps": [],
+      "top_score": -6.699,
+      "llm_ms": 0.0
+    },
+    {
+      "id": "u09",
+      "question": "What is the boiling point of ethanol at sea level?",
+      "answerable": false,
+      "answer": "I can't answer that from the PEPs I retrieved. Try rephrasing, or name the PEP you mean.",
+      "refused": true,
+      "citations": [],
+      "cited_peps": [],
+      "top_score": -11.224,
+      "llm_ms": 0.0
+    },
+    {
+      "id": "u10",
+      "question": "Which SQL clause filters grouped rows in PostgreSQL?",
+      "answerable": false,
+      "answer": "I can't answer that from the PEPs I retrieved. Try rephrasing, or name the PEP you mean.",
+      "refused": true,
+      "citations": [],
+      "cited_peps": [],
+      "top_score": -3.762,
+      "llm_ms": 0.0
+    }
+  ]
+}
