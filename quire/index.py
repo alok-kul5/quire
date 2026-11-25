@@ -26,7 +26,7 @@ def tokenize(texts: list[str]):
     return bm25s.tokenize(texts, stopwords="en", show_progress=False)
 
 
-def build(raw_dir: Path = config.RAW_DIR, index_dir: Path = config.INDEX_DIR, batch: int = 16) -> dict:
+def build(raw_dir: Path = config.RAW_DIR, index_dir: Path = config.INDEX_DIR, batch: int = 8) -> dict:
     import bm25s
     import lancedb
 
@@ -47,9 +47,17 @@ def build(raw_dir: Path = config.RAW_DIR, index_dir: Path = config.INDEX_DIR, ba
     model.max_seq_length = 384
     db = lancedb.connect(str(index_dir / "lancedb"))
     table = None
-    step = 1024  # embed and write in slices to keep peak RAM low
+    step = 512  # embed and write in slices to keep peak RAM low
     for start in range(0, len(texts), step):
-        vecs = model.encode(texts[start : start + step], batch_size=batch, normalize_embeddings=True)
+        for attempt in range(30):  # survive transient memory pressure on a shared machine
+            try:
+                vecs = model.encode(texts[start : start + step], batch_size=batch, normalize_embeddings=True)
+                break
+            except RuntimeError as e:
+                if "memory" not in str(e) or attempt == 29:
+                    raise
+                print(f"  low memory at {start}, retrying in 20s", flush=True)
+                time.sleep(20)
         rows = [{"id": chunks[start + j].id, "row": start + j, "vector": v.tolist()} for j, v in enumerate(vecs)]
         if table is None:
             table = db.create_table("chunks", data=rows, mode="overwrite")
