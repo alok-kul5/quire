@@ -1,0 +1,70 @@
+{"id": "q01", "question": "What operator does the assignment expressions proposal introduce?", "gold_peps": [572], "keywords": [":="], "answerable": true}
+{"id": "q02", "question": "How many spaces per indentation level does the Python style guide recommend?", "gold_peps": [8], "keywords": ["4"], "answerable": true}
+{"id": "q03", "question": "What is the maximum line length recommended by the Python style guide?", "gold_peps": [8], "keywords": ["79"], "answerable": true}
+{"id": "q04", "question": "Which PEP introduced f-strings, also called literal string interpolation?", "gold_peps": [498], "keywords": ["498"], "answerable": true}
+{"id": "q05", "question": "What keyword pair did PEP 492 add for native coroutines?", "gold_peps": [492], "keywords": ["async", "await"], "answerable": true}
+{"id": "q06", "question": "What syntax did structural pattern matching add to Python?", "gold_peps": [634, 635, 636], "keywords": ["match", "case"], "answerable": true}
+{"id": "q07", "question": "What does the yield from expression do according to its PEP?", "gold_peps": [380], "keywords": ["subgenerator"], "answerable": true}
+{"id": "q08", "question": "Which operator was proposed for matrix multiplication?", "gold_peps": [465], "keywords": ["@"], "answerable": true}
+{"id": "q09", "question": "How are positional-only parameters marked in a function definition?", "gold_peps": [570], "keywords": ["/"], "answerable": true}
+{"id": "q10", "question": "What is the Zen of Python and which PEP contains it?", "gold_peps": [20], "keywords": ["20"], "answerable": true}
+{"id": "q11", "question": "What is the purpose of the pyproject.toml build-system table?", "gold_peps": [518], "keywords": ["requires"], "answerable": true}
+{"id": "q12", "question": "Which PEP defines the standard for type hints and the typing module?", "gold_peps": [484], "keywords": ["484"], "answerable": true}
+{"id": "q13", "question": "What syntax was proposed for annotating the types of variables?", "gold_peps": [526], "keywords": [":"], "answerable": true}
+{"id": "q14", "question": "What does PEP 703 propose about the global interpreter lock?", "gold_peps": [703], "keywords": ["optional"], "answerable": true}
+{"id": "q15", "question": "What union type syntax using the pipe character was added for type hints?", "gold_peps": [604], "keywords": ["|"], "answerable": true}
+{"id": "q16", "question": "What does the walrus operator's PEP say about using it at the top level of an expression statement?", "gold_peps": [572], "keywords": ["parenthes"], "answerable": true}
+{"id": "q17", "question": "When did Python 2.7 reach its end of life according to its release schedule?", "gold_peps": [373], "keywords": ["2020"], "answerable": true}
+{"id": "q18", "question": "What naming convention should class names follow in the style guide?", "gold_peps": [8], "keywords": ["CapWords"], "answerable": true}
+{"id": "q19", "question": "What are data classes and which decorator generates their special methods?", "gold_peps": [557], "keywords": ["dataclass"], "answerable": true}
+{"id": "q20", "question": "Which PEP added the breakpoint() built-in function?", "gold_peps": [553], "keywords": ["553"], "answerable": true}
+{"id": "q21", "question": "What environment variable can be used to control what breakpoint() calls?", "gold_peps": [553], "keywords": ["PYTHONBREAKPOINT"], "answerable": true}
+{"id": "q22", "question": "How does the wheel binary package format name its files?", "gold_peps": [427, 491], "keywords": ["{distribution}"], "answerable": true}
+{"id": "q23", "question": "What is the purpose of the Protocol class for structural subtyping?", "gold_peps": [544], "keywords": ["structural"], "answerable": true}
+{"id": "q24", "question": "What does the TypedDict proposal allow you to type?", "gold_peps": [589], "keywords": ["dictionar"], "answerable": true}
+{"id": "q25", "question": "What did PEP 3107 introduce for functions?", "gold_peps": [3107], "keywords": ["annotation"], "answerable": true}
+{"id": "q26", "question": "Why did Python 3 change print from a statement to a function?", "gold_peps": [3105], "keywords": ["function"], "answerable": true}
+{"id": "q27", "question": "What is the Final qualifier used for in typing?", "gold_peps": [591], "keywords": ["reassign"], "answerable": true}
+{"id": "q28", "question": "What does the Literal type let you express?", "gold_peps": [586], "keywords": ["literal"], "answerable": true}
+{"id": "q29", "question": "Which PEP introduced exception groups and except*?", "gold_peps": [654], "keywords": ["ExceptionGroup"], "answerable": true}
+{"id": "q30", "question": "What did PEP 678 add to exceptions?", "gold_peps": [678], "keywords": ["add_note"], "answerable": true}
+{"id": "q31", "question": "What new syntax for generic classes and type aliases did PEP 695 introduce?", "gold_peps": [695], "keywords": ["type"], "answerable": true}
+{"id": "q32", "question": "What is the Self type used for?", "gold_peps": [673], "keywords": ["Self"], "answerable": true}
+{"id": "q33", "question": "How did dictionary merge and update operators work in the proposal that added them?", "gold_peps": [584], "keywords": ["|"], "answerable": true}
+{"id": "q34", "question": "Which string methods remove a prefix or suffix?", "gold_peps": [616], "keywords": ["removeprefix"], "answerable": true}
+{"id": "q35", "question": "What is the release cadence for Python after PEP 602?", "gold_peps": [602], "keywords": ["annual"], "answerable": true}
+{"id": "q36", "question": "What is the zoneinfo module and what data does it use?", "gold_peps": [615], "keywords": ["IANA"], "answerable": true}
+{"id": "q37", "question": "What is the import system's spec object called that PEP 451 introduced?", "gold_peps": [451], "keywords": ["ModuleSpec"], "answerable": true}
+{"id": "q38", "question": "What are namespace packages without __init__.py called?", "gold_peps": [420], "keywords": ["namespace"], "answerable": true}
+{"id": "q39", "question": "What does the with statement do and which PEP defined it?", "gold_peps": [343], "keywords": ["__enter__"], "answerable": true}
+{"id": "q40", "question": "What decorator syntax was introduced for functions and methods?", "gold_peps": [318], "keywords": ["@"], "answerable": true}
+{"id": "q41", "question": "How should docstrings be formatted according to the docstring conventions?", "gold_peps": [257], "keywords": ["triple"], "answerable": true}
+{"id": "q42", "question": "What is the purpose of the __future__ module statements?", "gold_peps": [236], "keywords": ["future"], "answerable": true}
+{"id": "q43", "question": "What does the Python Steering Council consist of?", "gold_peps": [13], "keywords": ["five"], "answerable": true}
+{"id": "q44", "question": "What are the possible statuses of a PEP during its lifecycle?", "gold_peps": [1], "keywords": ["Draft"], "answerable": true}
+{"id": "q45", "question": "What comment block format does inline script metadata use in single-file scripts?", "gold_peps": [723], "keywords": ["# /// script"], "answerable": true}
+{"id": "q46", "question": "What is the externally managed environment marker file?", "gold_peps": [668], "keywords": ["EXTERNALLY-MANAGED"], "answerable": true}
+{"id": "q47", "question": "How does the core metadata field for license expressions work using SPDX?", "gold_peps": [639], "keywords": ["SPDX"], "answerable": true}
+{"id": "q48", "question": "Does Python preserve the order of **kwargs passed to a function, and which PEP guarantees it?", "gold_peps": [468], "keywords": ["order"], "answerable": true}
+{"id": "q49", "question": "What does keyword-only arguments syntax look like?", "gold_peps": [3102], "keywords": ["*"], "answerable": true}
+{"id": "q50", "question": "Why was the Python 3 str and bytes split made?", "gold_peps": [3137, 358], "keywords": ["bytes"], "answerable": true}
+{"id": "q51", "question": "What does the per-interpreter GIL proposal change?", "gold_peps": [684], "keywords": ["interpreter"], "answerable": true}
+{"id": "q52", "question": "What are the semantics of the asyncio event loop's pluggable design described in PEP 3156?", "gold_peps": [3156], "keywords": ["event loop"], "answerable": true}
+{"id": "q53", "question": "What is the ParamSpec type variable for?", "gold_peps": [612], "keywords": ["parameter"], "answerable": true}
+{"id": "q54", "question": "What do the TypeGuard user-defined type guards do?", "gold_peps": [647], "keywords": ["narrow"], "answerable": true}
+{"id": "q55", "question": "How do variadic generics with TypeVarTuple work?", "gold_peps": [646], "keywords": ["TypeVarTuple"], "answerable": true}
+{"id": "q56", "question": "What is the enum module's base class, and which PEP added it?", "gold_peps": [435], "keywords": ["Enum"], "answerable": true}
+{"id": "q57", "question": "What is pathlib and why was it proposed?", "gold_peps": [428], "keywords": ["path"], "answerable": true}
+{"id": "q58", "question": "Which PEP proposes the statistics module?", "gold_peps": [450], "keywords": ["statistics"], "answerable": true}
+{"id": "q59", "question": "How does the PEP for deferred evaluation of annotations change when annotations are evaluated?", "gold_peps": [649, 749], "keywords": ["lazily", "deferred"], "answerable": true}
+{"id": "q60", "question": "What does the override decorator in typing do?", "gold_peps": [698], "keywords": ["override"], "answerable": true}
+{"id": "u01", "question": "What port does the Django development server listen on by default?", "gold_peps": [], "keywords": [], "answerable": false}
+{"id": "u02", "question": "Who won the 2018 FIFA World Cup?", "gold_peps": [], "keywords": [], "answerable": false}
+{"id": "u03", "question": "How do I configure gradient checkpointing in PyTorch Lightning?", "gold_peps": [], "keywords": [], "answerable": false}
+{"id": "u04", "question": "What is the price of a Raspberry Pi 5?", "gold_peps": [], "keywords": [], "answerable": false}
+{"id": "u05", "question": "Which React hook is used for side effects?", "gold_peps": [], "keywords": [], "answerable": false}
+{"id": "u06", "question": "What is the recommended dosage of ibuprofen for adults?", "gold_peps": [], "keywords": [], "answerable": false}
+{"id": "u07", "question": "How many moons does Jupiter have?", "gold_peps": [], "keywords": [], "answerable": false}
+{"id": "u08", "question": "What does the Kubernetes kubelet do on a node?", "gold_peps": [], "keywords": [], "answerable": false}
+{"id": "u09", "question": "What is the boiling point of ethanol at sea level?", "gold_peps": [], "keywords": [], "answerable": false}
+{"id": "u10", "question": "Which SQL clause filters grouped rows in PostgreSQL?", "gold_peps": [], "keywords": [], "answerable": false}
