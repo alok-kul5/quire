@@ -58,7 +58,8 @@ class Retriever:
         self.bm25 = bm25s.BM25.load(str(index_dir / "bm25"))
         self.table = lancedb.connect(str(index_dir / "lancedb")).open_table("chunks")
         self.embed = SentenceTransformer(config.EMBED_MODEL)
-        self.reranker: Reranker | None = CrossEncoder(config.RERANK_MODEL) if load_reranker else None
+        self.embed.max_seq_length = 128  # queries are short
+        self.reranker: Reranker | None = CrossEncoder(config.RERANK_MODEL, max_length=320) if load_reranker else None
         self.timings: dict[str, float] = {}
 
     # --- single stages -------------------------------------------------
@@ -71,7 +72,7 @@ class Retriever:
 
     def dense_rows(self, query: str, n: int) -> list[int]:
         vec = self.embed.encode(config.EMBED_QUERY_PREFIX + query, normalize_embeddings=True)
-        res = self.table.search(vec.tolist()).metric("cosine").limit(n).select(["row"]).to_list()
+        res = self.table.search(vec.tolist()).metric("cosine").limit(n).to_list()
         return [int(r["row"]) for r in res]
 
     # --- full pipeline ---------------------------------------------------
@@ -103,7 +104,7 @@ class Retriever:
         if mode == "rerank" and self.reranker is not None and fused:
             pool = [r for r, _ in fused[: candidates]]
             s = time.perf_counter()
-            scores = self.reranker.predict([(query, self.chunks[r].index_text) for r in pool], batch_size=32)
+            scores = self.reranker.predict([(query, self.chunks[r].index_text) for r in pool], batch_size=8)
             t["rerank_ms"] = (time.perf_counter() - s) * 1000
             fused = sorted(zip(pool, (float(x) for x in scores), strict=False), key=lambda kv: -kv[1])
             note("rerank", [r for r, _ in fused])

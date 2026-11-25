@@ -14,7 +14,7 @@ REFUSAL_TEXT = "I can't answer that from the PEPs I retrieved. Try rephrasing, o
 
 # Cross-encoder logit below which the best passage is treated as off-topic and the
 # LLM is never called. Calibrated on the unanswerable split of the eval set.
-MIN_RERANK_SCORE = -4.0
+MIN_RERANK_SCORE = -2.5
 
 SYSTEM = f"""You answer questions about Python Enhancement Proposals (PEPs) using ONLY the numbered passages provided.
 

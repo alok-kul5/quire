@@ -134,7 +134,7 @@ def write_report() -> Path:
         names = {"bm25": "BM25", "dense": "Dense (bge-small)", "hybrid": "Hybrid (RRF)", "rerank": "Hybrid + cross-encoder rerank"}
         for m, a in r["modes"].items():
             lines.append(
-                f"| {names[m]} | {fmt(a['recall@1'])} | {fmt(a['recall@3'])} | {fmt(a['recall@5'])} | {fmt(a['recall@10'])} | {a['mrr@10']:.3f} | {a['p50_ms']:.0f} ms |"
+                f"| {names[m]} | {fmt(a['recall@1'])} | {fmt(a['recall@3'])} | {fmt(a['recall@5'])} | {fmt(a['recall@10'])} | {a['mrr@10']:.3f} | {a['p50_ms']:.1f} ms |"
             )
         lines.append("")
     gp = RESULTS / "generation.json"
