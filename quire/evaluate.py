@@ -140,6 +140,26 @@ def rescore(retriever) -> dict:
     return data
 
 
+def judge_pass(retriever, judge) -> dict:
+    """Second pass: judge every saved answer that has no verdict yet.
+
+    Answering and judging in separate passes keeps one model resident on a small GPU
+    instead of swapping two models on every question.
+    """
+    path = RESULTS / "generation.json"
+    data = json.loads(path.read_text())
+    rows = [r for r in data["per_question"] if r["answerable"] and not r["refused"] and "judge" not in r]
+    for i, r in enumerate(rows, 1):
+        hits = retriever.search(r["question"], mode=data["summary"]["mode"])
+        raw = judge.chat(JUDGE_SYSTEM, f"Passages:\n\n{format_context(hits)}\n\nAnswer:\n{r['answer']}\n\nJSON:", max_tokens=200)
+        r["judge"] = parse_judge(raw)
+        path.write_text(json.dumps(data, indent=2))  # checkpoint every verdict
+        print(f"[judge {i}/{len(rows)}] {r['id']} score={r['judge']['score']}", flush=True)
+    s = data["summary"]
+    data["summary"] = summarize(data["per_question"], s["mode"], s["model"], judge.name)
+    return data
+
+
 def fmt(x, pct=True):
     if x is None:
         return "-"
@@ -191,7 +211,7 @@ def write_report() -> Path:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("what", choices=["retrieval", "generation", "rescore", "report"])
+    ap.add_argument("what", choices=["retrieval", "generation", "judge", "rescore", "report"])
     ap.add_argument("--limit", type=int)
     ap.add_argument("--no-judge", action="store_true")
     args = ap.parse_args()
@@ -201,7 +221,11 @@ def main() -> None:
         return
     questions = load_questions()
     retriever = Retriever()
-    if args.what == "rescore":
+    if args.what == "judge":
+        from .llm import OllamaLLM
+
+        (RESULTS / "generation.json").write_text(json.dumps(judge_pass(retriever, OllamaLLM(config.JUDGE_MODEL, retries=3)), indent=2))
+    elif args.what == "rescore":
         (RESULTS / "generation.json").write_text(json.dumps(rescore(retriever), indent=2))
     elif args.what == "retrieval":
         res = run_retrieval(retriever, questions)
