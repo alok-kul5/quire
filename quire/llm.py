@@ -17,12 +17,22 @@ class LLM(Protocol):
 
 
 class OllamaLLM:
-    def __init__(self, model: str = config.LLM_MODEL, url: str = config.OLLAMA_URL, timeout: float = 180.0):
+    def __init__(self, model: str = config.LLM_MODEL, url: str = config.OLLAMA_URL, timeout: float = 600.0, retries: int = 0):
         self.name = model
+        self.retries = retries
         self.url = url.rstrip("/")
         self.client = httpx.Client(timeout=timeout)
 
     def chat(self, system: str, user: str, temperature: float = 0.0, max_tokens: int = 512) -> str:
+        for attempt in range(self.retries + 1):
+            try:
+                return self._chat(system, user, temperature, max_tokens)
+            except (httpx.TimeoutException, httpx.ConnectError):
+                if attempt == self.retries:
+                    raise
+        raise RuntimeError("unreachable")
+
+    def _chat(self, system: str, user: str, temperature: float, max_tokens: int) -> str:
         r = self.client.post(
             f"{self.url}/api/chat",
             json={

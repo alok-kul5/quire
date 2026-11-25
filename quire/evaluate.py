@@ -55,10 +55,16 @@ def run_retrieval(retriever: Retriever, questions: list[dict]) -> dict:
     return out
 
 
-def run_generation(retriever: Retriever, questions: list[dict], llm, judge, mode: str = "rerank", limit: int | None = None) -> dict:
+def run_generation(retriever, questions: list[dict], llm, judge, mode: str = "rerank", limit: int | None = None, checkpoint: Path | None = None) -> dict:
     qs = questions[:limit] if limit else questions
     per = []
+    done: dict[str, dict] = {}
+    if checkpoint and checkpoint.exists():  # resume: a shared GPU can stall a long run
+        done = {r["id"]: r for r in map(json.loads, checkpoint.read_text(encoding="utf-8").splitlines()) if r}
     for i, q in enumerate(qs, 1):
+        if q["id"] in done:
+            per.append(done[q["id"]])
+            continue
         hits = retriever.search(q["question"], mode=mode)
         a = answer(q["question"], hits, llm)
         passages = [h.chunk.text for h in hits]
@@ -83,6 +89,9 @@ def run_generation(retriever: Retriever, questions: list[dict], llm, judge, mode
                 raw = judge.chat(JUDGE_SYSTEM, f"Passages:\n\n{format_context(hits)}\n\nAnswer:\n{a.text}\n\nJSON:", max_tokens=200)
                 row["judge"] = parse_judge(raw)
         per.append(row)
+        if checkpoint:
+            with checkpoint.open("a", encoding="utf-8") as f:
+                f.write(json.dumps(row) + "\n")
         print(f"[{i}/{len(qs)}] {q['id']} refused={a.refused} {row.get('judge', {}).get('score', '-')} | {a.text[:90]!r}")
 
     ans = [r for r in per if r["answerable"]]
@@ -181,8 +190,8 @@ def main() -> None:
     else:
         from .llm import OllamaLLM
 
-        judge = None if args.no_judge else OllamaLLM(config.JUDGE_MODEL)
-        res = run_generation(retriever, questions, OllamaLLM(), judge, limit=args.limit)
+        judge = None if args.no_judge else OllamaLLM(config.JUDGE_MODEL, retries=3)
+        res = run_generation(retriever, questions, OllamaLLM(retries=3), judge, limit=args.limit, checkpoint=RESULTS / "generation.partial.jsonl")
         (RESULTS / "generation.json").write_text(json.dumps(res, indent=2))
     write_report()
 
