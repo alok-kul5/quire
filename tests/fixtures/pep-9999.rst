@@ -1,0 +1,40 @@
+PEP: 9999
+Title: A Test Proposal for ``frobnicate``
+Author: Test Author <test@example.org>,
+        Second Author <second@example.org>
+Status: Final
+Type: Standards Track
+Created: 01-Jan-2024
+Python-Version: 3.99
+
+
+Abstract
+========
+
+This PEP proposes a :func:`frobnicate` builtin, building on :pep:`572`
+and the `docs <https://example.org>`__. See also ``frob()``.
+
+
+Rationale
+=========
+
+Frobnication is common. Users write helper functions for it again and again.
+
+A second paragraph explains why the builtin form is better than a library.
+
+.. code-block:: python
+
+    frobnicate(x)
+
+
+Rejected Ideas
+--------------
+
+A keyword was considered and rejected because it would break existing code.
+
+
+Copyright
+=========
+
+This document is placed in the public domain or under the
+CC0-1.0-Universal license, whichever is more permissive.
