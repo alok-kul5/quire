@@ -6,3 +6,4 @@ data/raw/
 data/index/
 .env
 data/*.log
+evals/results/*.partial.jsonl

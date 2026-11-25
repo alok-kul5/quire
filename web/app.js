@@ -4,10 +4,10 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   const TRIES = [
-    "Why does the walrus operator need parentheses at the top level?",
+    "What does PEP 572 say about using := at the top level of an expression statement?",
     "What did PEP 703 propose for the GIL?",
-    "How do I mark positional-only parameters?",
-    "Why was a dedicated matrix multiplication operator added?",
+    "How are positional-only parameters marked?",
+    "Who won the 2018 FIFA World Cup?",
   ];
   let mode = "rerank";
 
@@ -115,7 +115,9 @@
     const t = d.timings || {};
     const cited = d.sources.filter((s) => s.cited).map((s) => `PEP ${s.pep}`);
     $("#answerFoot").textContent = d.refused
-      ? `Refused: no passage scored high enough to ground an answer · ${d.model}`
+      ? ((t.llm_ms || 0) === 0
+        ? "Refused before the LLM: no passage cleared the reranker's relevance floor"
+        : `Refused by ${d.model}: the retrieved passages don't support an answer`)
       : `${[...new Set(cited)].join(" · ") || "no citations"} · retrieval ${Math.round(t.retrieval_ms || 0)} ms · ${d.model} ${((t.llm_ms || 0) / 1000).toFixed(1)} s`;
 
     const box = $("#sources");
@@ -159,7 +161,7 @@
           <h3>${NAMES[m]}</h3>
           <div class="big">${(r[m]["recall@5"] * 100).toFixed(0)}<small>% recall@5</small></div>
           <div class="bar"><i data-w="${r[m]["mrr@10"] * 100}"></i></div>
-          <dl><dt>MRR@10</dt><dd>${r[m]["mrr@10"].toFixed(3)}</dd><dt>Recall@1</dt><dd>${pct(r[m]["recall@1"])}</dd><dt>Recall@10</dt><dd>${pct(r[m]["recall@10"])}</dd><dt>p50</dt><dd>${Math.round(r[m].p50_ms)} ms</dd></dl>
+          <dl><dt>MRR@10</dt><dd>${r[m]["mrr@10"].toFixed(3)}</dd><dt>Recall@1</dt><dd>${pct(r[m]["recall@1"])}</dd><dt>Recall@10</dt><dd>${pct(r[m]["recall@10"])}</dd><dt>p50</dt><dd>${r[m].p50_ms < 10 ? r[m].p50_ms.toFixed(1) : Math.round(r[m].p50_ms)} ms</dd></dl>
         </div>`).join("");
       const io = new IntersectionObserver((ents) => ents.forEach((en) => {
         if (en.isIntersecting) { $$(".bar i", en.target).forEach((i) => (i.style.width = i.dataset.w + "%")); io.disconnect(); }

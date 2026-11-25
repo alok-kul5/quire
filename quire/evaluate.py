@@ -202,7 +202,7 @@ def write_report() -> Path:
             f"| Judge replies that failed to parse (excluded) | {s.get('judge_parse_failures', 0)} |",
             f"| Refusal rate on unanswerable | {fmt(s['refusal_rate_unanswerable'])} |",
             f"| False refusal rate | {fmt(s['false_refusal_rate'])} |",
-            f"| LLM p50 latency | {s['llm_p50_ms'] / 1000:.1f} s |",
+            f"| LLM p50 latency (shared GPU) | {s['llm_p50_ms'] / 1000:.1f} s |",
             "",
         ]
     out = RESULTS / "REPORT.md"

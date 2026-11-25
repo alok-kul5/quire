@@ -16,7 +16,7 @@ OUT = Path(__file__).resolve().parent.parent / "docs"
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--url", default="http://localhost:8000")
-    ap.add_argument("--question", default="Why does the walrus operator need parentheses at the top level?")
+    ap.add_argument("--question", default="What does PEP 572 say about using := at the top level of an expression statement?")
     args = ap.parse_args()
     OUT.mkdir(exist_ok=True)
     with sync_playwright() as p:
@@ -28,12 +28,14 @@ def main() -> None:
 
         page.fill("#q", args.question)
         page.click("#askBtn")
-        page.wait_for_selector(".src", timeout=240_000)
-        page.wait_for_function("!document.querySelector('#askBtn').disabled", timeout=240_000)
+        page.wait_for_selector(".src", timeout=400_000)
+        page.wait_for_function("!document.querySelector('#askBtn').disabled", timeout=400_000)
         page.wait_for_timeout(2500)
+        page.set_viewport_size({"width": 1440, "height": 1560})
         page.evaluate("window.scrollTo(0, 0)")
-        page.wait_for_timeout(300)
-        page.screenshot(path=str(OUT / "screenshot-answer.png"), full_page=True)
+        page.wait_for_timeout(500)
+        page.screenshot(path=str(OUT / "screenshot-answer.png"))
+        page.set_viewport_size({"width": 1440, "height": 900})
         first = page.locator(".cite").first
         if first.count():
             first.hover()

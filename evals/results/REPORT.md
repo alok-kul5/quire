@@ -23,4 +23,4 @@
 | Judge replies that failed to parse (excluded) | 2 |
 | Refusal rate on unanswerable | 100.0% |
 | False refusal rate | 3.3% |
-| LLM p50 latency | 58.6 s |
+| LLM p50 latency (shared GPU) | 58.6 s |
