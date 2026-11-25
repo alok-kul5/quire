@@ -20,7 +20,7 @@ EMBED_QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
 RERANK_MODEL = _env("RERANK_MODEL", "cross-encoder/ms-marco-MiniLM-L-6-v2")
 
 OLLAMA_URL = _env("OLLAMA_URL", "http://localhost:11434")
-LLM_MODEL = _env("LLM_MODEL", "qwen3:4b")
+LLM_MODEL = _env("LLM_MODEL", "qwen2.5:7b")
 JUDGE_MODEL = _env("JUDGE_MODEL", "gemma3:4b")  # a different model family than the answerer
 
 CHUNK_WORDS = int(_env("CHUNK_WORDS", "220"))

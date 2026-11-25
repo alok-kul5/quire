@@ -48,3 +48,11 @@ def test_low_rerank_score_refuses_without_calling_llm(retriever):
 
 def test_no_hits_refuses():
     assert answer("x", [], FakeLLM()).refused
+
+
+def test_reasoning_is_stripped():
+    from quire.llm import strip_reasoning
+
+    assert strip_reasoning("Okay, let me think.\n</think>\n\nIt is := [1].") == "It is := [1]."
+    assert strip_reasoning("<think>hmm</think>Answer [1].") == "Answer [1]."
+    assert strip_reasoning("Plain [1].") == "Plain [1]."

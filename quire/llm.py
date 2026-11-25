@@ -20,6 +20,7 @@ class OllamaLLM:
     def __init__(self, model: str = config.LLM_MODEL, url: str = config.OLLAMA_URL, timeout: float = 600.0, retries: int = 0):
         self.name = model
         self.retries = retries
+        self._suffix = "\n/no_think" if "qwen3" in model else ""  # qwen3 soft switch: no chain-of-thought
         self.url = url.rstrip("/")
         self.client = httpx.Client(timeout=timeout)
 
@@ -37,15 +38,15 @@ class OllamaLLM:
             f"{self.url}/api/chat",
             json={
                 "model": self.name,
-                "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
+                "messages": [{"role": "system", "content": system}, {"role": "user", "content": user + self._suffix}],
                 "stream": False,
                 "think": False,
-                "options": {"temperature": temperature, "num_predict": max_tokens, "num_ctx": 8192, "seed": 7},
+                "options": {"temperature": temperature, "num_predict": max_tokens, "num_ctx": 4096, "seed": 7},
             },
         )
         r.raise_for_status()
         text = r.json()["message"]["content"]
-        return re.sub(r"<think>.*?</think>", "", text, flags=re.S).strip()
+        return strip_reasoning(text)
 
     def available(self) -> bool:
         try:
@@ -76,3 +77,10 @@ class FakeLLM:
             return "INSUFFICIENT_CONTEXT"
         first = m.group(1).strip().split(". ")[0].rstrip(".")
         return f"{first} [1]."
+
+
+def strip_reasoning(text: str) -> str:
+    """Drop chain-of-thought some local models emit even with thinking disabled."""
+    if "</think>" in text:
+        text = text.rsplit("</think>", 1)[1]
+    return re.sub(r"<think>.*", "", text, flags=re.S).strip()

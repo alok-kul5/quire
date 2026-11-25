@@ -3,7 +3,7 @@
 # Quire
 
 **Cited answers from the Python Enhancement Proposals.**
-Hybrid retrieval (BM25 + dense + cross-encoder rerank) over all 748 PEPs, a local LLM that cites every claim or refuses, and an eval harness that measures each piece.
+Hybrid retrieval (BM25 + dense + cross-encoder rerank) over all 747 PEPs, a local LLM that cites every claim or refuses, and an eval harness that measures each piece.
 
 [![ci](https://github.com/alok-kul5/quire/actions/workflows/ci.yml/badge.svg)](https://github.com/alok-kul5/quire/actions/workflows/ci.yml)
 ![python](https://img.shields.io/badge/python-3.11-0d1a2b)
@@ -22,7 +22,7 @@ Hybrid retrieval (BM25 + dense + cross-encoder rerank) over all 748 PEPs, a loca
 ```mermaid
 flowchart LR
     subgraph Ingest["Ingest (offline)"]
-        A[python/peps<br/>748 .rst files] --> B[Header + section parser<br/>reST cleanup]
+        A[python/peps<br/>747 PEPs] --> B[Header + section parser<br/>reST cleanup]
         B --> C[Section-bounded chunks<br/>~220 words, 40 overlap<br/>+ context header]
     end
     C --> D[(bm25s index)]
@@ -36,7 +36,7 @@ flowchart LR
         I --> J[Cross-encoder rerank<br/>ms-marco-MiniLM-L-6]
         J --> K{best score<br/>above floor?}
         K -- no --> R[Refuse]
-        K -- yes --> L[qwen3:4b via Ollama<br/>numbered passages]
+        K -- yes --> L[qwen2.5:7b via Ollama<br/>numbered passages]
         L --> M[Answer with inline citations<br/>invalid cites stripped]
     end
     D -.-> G
@@ -53,7 +53,7 @@ flowchart LR
 
 **Retrieval.** BM25 (`bm25s`) and dense search (`bge-small-en-v1.5` in an embedded LanceDB table, no server) each return 40 candidates. Reciprocal rank fusion merges them, and a MiniLM cross-encoder re-scores the fused pool. Everything runs on CPU.
 
-**Answering.** The top 6 passages are numbered and sent to `qwen3:4b` through Ollama, with instructions to cite each sentence and to reply `INSUFFICIENT_CONTEXT` when the passages don't support an answer. There are two refusal paths: a calibrated floor on the reranker score (off-topic questions never reach the LLM), and the model's own refusal. Citations to passages that don't exist are stripped.
+**Answering.** The top 6 passages are numbered and sent to `qwen2.5:7b` through Ollama, with instructions to cite each sentence and to reply `INSUFFICIENT_CONTEXT` when the passages don't support an answer. There are two refusal paths: a calibrated floor on the reranker score (off-topic questions never reach the LLM), and the model's own refusal. Citations to passages that don't exist are stripped.
 
 **Evaluation.** There are 70 questions. 60 have gold PEPs that I checked by hand against the source text, and 10 are deliberately off-topic. The harness reports:
 - **Retrieval:** Recall@1/3/5/10 and MRR@10 for each retriever (PEP-level relevance), plus latency.
@@ -68,7 +68,7 @@ Needs Python 3.11 and [Ollama](https://ollama.com). No Docker, no API keys.
 git clone https://github.com/alok-kul5/quire && cd quire
 python -m venv .venv && . .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-ollama pull qwen3:4b && ollama pull gemma3:4b
+ollama pull qwen2.5:7b && ollama pull gemma3:4b
 
 git clone --depth 1 https://github.com/python/peps data/raw/peps
 python -m quire.index                                # ~17k chunks, a few minutes on CPU
